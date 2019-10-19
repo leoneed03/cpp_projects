@@ -1,0 +1,16 @@
+CC = g++
+CMP = --std=c++11
+LIBS = -pthread -lgtest
+SRC = hashtable.cpp list.cpp node.cpp test.cpp
+OBJS = $(SRC:.cpp=.o)
+
+test: $(OBJS)
+	$(CC) $(OBJS) -o $@ $(LIBS)
+
+%.o: %.cc
+	$(CC) $(CMP) -c -g $< -O0 -o $@
+
+clean:
+	rm -rf *.o
+	rm -rf test
+
